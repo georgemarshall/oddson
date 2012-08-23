@@ -1,0 +1,11 @@
+.coverage
+.Python
+bin/*
+build/*
+include/*
+lib/*
+lib64
+man/*
+share/*
+src/*
+*.db
