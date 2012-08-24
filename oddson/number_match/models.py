@@ -8,7 +8,7 @@ from picklefield.fields import PickledObjectField
 
 class Attempt(models.Model):
     """(Attempt description)"""
-    contract = models.ForeignKey('Contract')
+    game = models.ForeignKey('Game')
     user_number = models.PositiveIntegerField(_('user number'))
     our_number = models.PositiveIntegerField(_('our number'))
 
@@ -22,7 +22,7 @@ class Attempt(models.Model):
         verbose_name_plural = _('attempts')
 
     def __unicode__(self):
-        return u'%s (%d)' % (self.contract, self.pk)
+        return u'%s (%d)' % (self.game, self.pk)
 
     def is_match(self):
         return self.user_number == self.our_number
@@ -33,10 +33,9 @@ class Attempt(models.Model):
     #     return ('number_match:attempt_detail', (), {'contract_id': self.contract_id, 'id': self.pk})
 
 
-class Contract(models.Model):
-    """(Contract description)"""
+class Game(models.Model):
+    """(Game description)"""
     is_active = models.BooleanField(_('active'), default=True)
-    contract_id = models.SlugField(_('contract number'))
     compleation_date = models.DateTimeField(_('compleation date'), blank=True, null=True)
     creation_date = models.DateTimeField(_('created'), auto_now_add=True)
 
@@ -53,15 +52,19 @@ class Contract(models.Model):
     max_value = models.PositiveIntegerField(_('max value'))
 
     class Meta:
-        verbose_name = _('contract')
-        verbose_name_plural = _('contracts')
+        verbose_name = _('game')
+        verbose_name_plural = _('games')
 
     def __unicode__(self):
-        return self.contract_id
+        return u'%d' % self.pk
 
     def generate_number(self):
         return random.randint(self.min_value, self.max_value)
 
     # @models.permalink
     # def get_absolute_url(self):
-    #     return ('number_match:contract_detail', (), {'id': self.pk})
+    #     return ('number_match:detail', (), {'id': self.pk})
+
+
+# Signals
+from . import signals

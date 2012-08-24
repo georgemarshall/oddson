@@ -2,42 +2,42 @@ from djangorestframework.resources import ModelResource
 from djangorestframework.reverse import reverse
 
 from .forms import AttemptForm
-from .models import Attempt, Contract
+from .models import Attempt, Game
 
 
 class AttemptResource(ModelResource):
-    exclude = ('pk', 'contract', 'ip_addr', 'request')
-    form = AttemptForm
+    exclude = ('pk', 'ip_addr', 'request')
     include = ('resources', 'url', 'is_match')
     model = Attempt
+    form = AttemptForm
 
     def resources(self, instance):
         return {
-            'contract': reverse('number_match:contract_detail', kwargs={
-                'id': instance.contract_id
+            'game': reverse('number_match:detail', kwargs={
+                'id': instance.game_id
             }, request=self.request),
         }
 
     def url(self, instance):
         return reverse('number_match:attempt_detail', kwargs={
-            'contract_id': instance.contract_id,
+            'game_id': instance.game_id,
             'id': instance.pk
         }, request=self.request)
 
 
-class ContractResource(ModelResource):
+class GameResource(ModelResource):
     exclude = ('pk', 'creation_date', 'is_active')
     include = ('resources', 'url')
-    model = Contract
+    model = Game
 
     def resources(self, instance):
         return {
             'attempts': reverse('number_match:attempt_list', kwargs={
-                'contract_id': instance.pk
+                'game_id': instance.pk
             }, request=self.request),
         }
 
     def url(self, instance):
-        return reverse('number_match:contract_detail', kwargs={
+        return reverse('number_match:detail', kwargs={
             'id': instance.pk
         }, request=self.request)

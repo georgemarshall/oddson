@@ -7,14 +7,14 @@ from djangorestframework.views import (
     ListModelView, ModelView, View
 )
 
-from .resources import AttemptResource, ContractResource
+from .resources import AttemptResource, GameResource
 
 
 class AttemptListView(PaginatorMixin, ListModelView):
     resource = AttemptResource
 
     def post(self, request, *args, **kwargs):
-        contract = get_object_or_404(ContractResource.model, pk=kwargs['contract_id'])
+        contract = get_object_or_404(GameResource.model, pk=kwargs['contract_id'])
 
         instance = contract.attempt_set.create(
             our_number=contract.generate_number(),
@@ -35,16 +35,16 @@ class AttemptView(ReadModelMixin, ModelView):
     resource = AttemptResource
 
 
-class ContractListView(PaginatorMixin, ListModelView):
-    resource = ContractResource
+class GameListView(PaginatorMixin, ListModelView):
+    resource = GameResource
 
 
-class ContractView(ReadModelMixin, ModelView):
-    resource = ContractResource
+class GameView(ReadModelMixin, ModelView):
+    resource = GameResource
 
 
 class Resources(View):
     def get(self, request, *args, **kwargs):
         return {'resources': {
-            'contracts': reverse('number_match:contract_list', request=request)
+            'number_match': reverse('number_match:list', request=request)
         }}
