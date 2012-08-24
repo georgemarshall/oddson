@@ -37,7 +37,7 @@ def number_match_attempt(sender, instance, created, **kwargs):
 
         end_rules = {
             'attempts': game.used_attempts >= game.allowed_attempts,
-            'date': game.end_date >= date.today(),
+            'date': game.end_date <= date.today(),
             'match': instance.is_match(),
         }
 
