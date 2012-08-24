@@ -6,5 +6,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url('', include('number_match.urls')),
+    url(r'', include('djangorestframework.urls', namespace='djangorestframework')),
+    url(r'', include('number_match.urls', namespace='number_match')),
 )

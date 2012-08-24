@@ -122,7 +122,9 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     # Applications
+    'djangorestframework',
     'number_match',
+    'picklefield',
 )
 
 # A sample logging configuration. The only tangible logging
