@@ -14,7 +14,7 @@ class AttemptListView(PaginatorMixin, ListModelView):
     resource = AttemptResource
 
     def post(self, request, *args, **kwargs):
-        contract = get_object_or_404(GameResource.model, pk=kwargs['contract_id'])
+        contract = get_object_or_404(GameResource.model, pk=kwargs['game_id'])
 
         instance = contract.attempt_set.create(
             our_number=contract.generate_number(),

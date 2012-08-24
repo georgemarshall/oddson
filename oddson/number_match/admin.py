@@ -13,7 +13,7 @@ class AttemptAdmin(admin.ModelAdmin):
 class GameAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('is_active', ('start_date', 'end_date'), ('allowed_attempts', 'used_attempts'), ('min_value', 'max_value')),
+            'fields': ('is_active', ('start_date', 'end_date'), ('used_attempts', 'allowed_attempts'), ('min_value', 'max_value')),
         }),
     )
     list_display = ('id', 'start_date', 'end_date')
