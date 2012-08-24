@@ -28,12 +28,16 @@ class Attempt(models.Model):
         return self.user_number == self.our_number
     is_match.boolean = True
 
+    # @models.permalink
+    # def get_absolute_url(self):
+    #     return ('number_match:attempt_detail', [], {'contract_id': self.contract_id, 'id': self.pk})
+
 
 class Contract(models.Model):
     """(Contract description)"""
     is_active = models.BooleanField(_('active'), default=True)
     contract_id = models.SlugField(_('contract number'))
-    compleation_date = models.DateField(_('compleation date'), blank=True, null=True)
+    compleation_date = models.DateTimeField(_('compleation date'), blank=True, null=True)
     creation_date = models.DateTimeField(_('created'), auto_now_add=True)
 
     # Date
@@ -57,3 +61,7 @@ class Contract(models.Model):
 
     def generate_number(self):
         return random.randint(self.min_value, self.max_value)
+
+    # @models.permalink
+    # def get_absolute_url(self):
+    #     return ('number_match:contract_detail', [], {'id': self.pk})
