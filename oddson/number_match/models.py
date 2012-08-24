@@ -30,7 +30,7 @@ class Attempt(models.Model):
 
     # @models.permalink
     # def get_absolute_url(self):
-    #     return ('number_match:attempt_detail', [], {'contract_id': self.contract_id, 'id': self.pk})
+    #     return ('number_match:attempt_detail', (), {'contract_id': self.contract_id, 'id': self.pk})
 
 
 class Contract(models.Model):
@@ -64,4 +64,4 @@ class Contract(models.Model):
 
     # @models.permalink
     # def get_absolute_url(self):
-    #     return ('number_match:contract_detail', [], {'id': self.pk})
+    #     return ('number_match:contract_detail', (), {'id': self.pk})
