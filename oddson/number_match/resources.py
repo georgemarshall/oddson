@@ -1,11 +1,13 @@
 from djangorestframework.resources import ModelResource
 from djangorestframework.reverse import reverse
 
+from .forms import AttemptForm
 from .models import Attempt, Contract
 
 
 class AttemptResource(ModelResource):
     exclude = ('pk', 'contract', 'ip_addr', 'request')
+    form = AttemptForm
     include = ('resources', 'url', 'is_match')
     model = Attempt
 

@@ -7,12 +7,10 @@ from djangorestframework.views import (
     ListModelView, ModelView, View
 )
 
-from .forms import AttemptForm
 from .resources import AttemptResource, ContractResource
 
 
 class AttemptListView(PaginatorMixin, ListModelView):
-    form = AttemptForm
     resource = AttemptResource
 
     def post(self, request, *args, **kwargs):
