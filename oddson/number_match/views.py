@@ -47,6 +47,6 @@ class ContractView(ReadModelMixin, ModelView):
 
 class Resources(View):
     def get(self, request, *args, **kwargs):
-        return [
-            {'name': 'Contract API', 'resource_uri': reverse('number_match:contract_list', request=request)}
-        ]
+        return {'resources': {
+            'contracts': reverse('number_match:contract_list', request=request)
+        }}
