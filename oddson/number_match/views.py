@@ -1,8 +1,8 @@
-from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from djangorestframework import status
 from djangorestframework.mixins import PaginatorMixin, ReadModelMixin
 from djangorestframework.response import Response
+from djangorestframework.reverse import reverse
 from djangorestframework.views import (
     ListModelView, ModelView, View
 )
@@ -48,5 +48,5 @@ class ContractView(ReadModelMixin, ModelView):
 class Resources(View):
     def get(self, request, *args, **kwargs):
         return [
-            {'name': 'Contract API', 'resource_uri': reverse('number_match:contract_list')}
+            {'name': 'Contract API', 'resource_uri': reverse('number_match:contract_list', request=request)}
         ]
