@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver, Signal
 from django.utils import timezone
@@ -35,7 +37,7 @@ def number_match_attempt(sender, instance, created, **kwargs):
 
         end_rules = {
             'attempts': game.used_attempts >= game.allowed_attempts,
-            'date': game.end_date >= timezone.now().date(),
+            'date': game.end_date >= date.today(),
             'match': instance.is_match(),
         }
 

@@ -1,3 +1,5 @@
+from datetime import date
+
 from celery.task import task
 from django.utils import timezone
 
@@ -13,7 +15,7 @@ def end_expired_games():
     # Find expired games
     games = Game.objects.filter(
         is_active=True,
-        end_date__lte=timezone.now().date(),
+        end_date__lte=date.today(),
     )
 
     # Deactivate the games
