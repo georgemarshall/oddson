@@ -1,0 +1,26 @@
+[{
+    "pk": 1, 
+    "model": "number_match.game", 
+    "fields": {
+        "compleation_date": null, 
+        "allowed_attempts": 10, 
+        "end_date": "2042-12-31", 
+        "max_value": 10, 
+        "min_value": 1, 
+        "is_active": true, 
+        "creation_date": "2012-08-24T19:48:42.220Z", 
+        "used_attempts": 1, 
+        "start_date": "2000-01-01"
+    }
+}, {
+    "pk": 1, 
+    "model": "number_match.attempt", 
+    "fields": {
+        "ip_addr": "127.0.0.1", 
+        "user_number": 1, 
+        "request": "gAJ9cQEoWAYAAABPcmlnaW5xAlUVaHR0cDovL2xvY2FsaG9zdDo4MDAwcQNYDwAAAEFjY2VwdC1MYW5ndWFnZXEEVQ5lbi1VUyxlbjtxPTAuOHEFWA8AAABBY2NlcHQtRW5jb2RpbmdxBlURZ3ppcCxkZWZsYXRlLHNkY2hxB1gEAAAASG9zdHEIVQ5sb2NhbGhvc3Q6ODAwMHEJWAYAAABBY2NlcHRxClU/dGV4dC9odG1sLGFwcGxpY2F0aW9uL3hodG1sK3htbCxhcHBsaWNhdGlvbi94bWw7cT0wLjksKi8qO3E9MC44cQtYCgAAAFVzZXItQWdlbnRxDFV1TW96aWxsYS81LjAgKE1hY2ludG9zaDsgSW50ZWwgTWFjIE9TIFggMTBfOF8xKSBBcHBsZVdlYktpdC81MzcuMSAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8yMS4wLjExODAuODIgU2FmYXJpLzUzNy4xcQ1YDgAAAEFjY2VwdC1DaGFyc2V0cQ5VHklTTy04ODU5LTEsdXRmLTg7cT0wLjcsKjtxPTAuM3EPWAoAAABDb25uZWN0aW9ucRBVCmtlZXAtYWxpdmVxEVgHAAAAUmVmZXJlcnESVS1odHRwOi8vbG9jYWxob3N0OjgwMDAvbnVtYmVyLW1hdGNoLzEvYXR0ZW1wdC9xE1gNAAAAQ2FjaGUtQ29udHJvbHEUVQltYXgtYWdlPTBxFVgGAAAAQ29va2llcRZVVnNlc3Npb25pZD0zZDA5OTUzMmYxYzYwMjcxZjgxNTMwNDAxZjUxZjU1YzsgY3NyZnRva2VuPXVRUDlIaXRkTGVKYUdIR0hLQnpldER4UUl4bFF1RnR2cRd1Lg==", 
+        "creation_date": "2012-08-24T20:01:30.992Z", 
+        "game": 1, 
+        "our_number": 10
+    }
+}]
