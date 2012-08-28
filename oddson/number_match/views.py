@@ -17,10 +17,12 @@ class AttemptListView(PaginatorMixin, ListModelView):
     def post(self, request, *args, **kwargs):
         contract = get_object_or_404(GameResource.model, pk=kwargs['game_id'])
 
+        # Add min and max value validators to the form
         if hasattr(self._resource, 'get_form_class'):
             form = self._resource.get_form_class()
-            form.base_fields['number'].validators.append(validators.MaxValueValidator(contract.max_value))
-            form.base_fields['number'].validators.append(validators.MinValueValidator(contract.min_value))
+            v = form.base_fields['number'].validators
+            v.append(validators.MaxValueValidator(contract.max_value))
+            v.append(validators.MinValueValidator(contract.min_value))
 
         instance = contract.attempt_set.create(
             our_number=contract.generate_number(),
