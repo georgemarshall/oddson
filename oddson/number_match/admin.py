@@ -6,11 +6,11 @@ from .models import Attempt, Game
 ##
 # Admin
 ##
-class AttemptAdmin(admin.ModelAdmin):  # pragma: no cover
+class AttemptAdmin(admin.ModelAdmin):
     pass
 
 
-class GameAdmin(admin.ModelAdmin):  # pragma: no cover
+class GameAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('is_active', ('start_date', 'end_date'), ('used_attempts', 'allowed_attempts'), ('min_value', 'max_value')),
@@ -24,5 +24,5 @@ class GameAdmin(admin.ModelAdmin):  # pragma: no cover
 ##
 # Register
 ##
-admin.site.register(Attempt, AttemptAdmin)  # pragma: no cover
-admin.site.register(Game, GameAdmin)  # pragma: no cover
+admin.site.register(Attempt, AttemptAdmin)
+admin.site.register(Game, GameAdmin)
