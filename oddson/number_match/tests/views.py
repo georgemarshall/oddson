@@ -43,6 +43,9 @@ class ViewsTestCase(TestCase):
         self.assertEqual(r.status_code, 201)
 
         # Out of range number
+        r = self.client.post(url, {'number': -100})
+        self.assertEqual(r.status_code, 400)
+
         r = self.client.post(url, {'number': 100})
         self.assertEqual(r.status_code, 400)
 

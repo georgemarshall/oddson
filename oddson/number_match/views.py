@@ -1,3 +1,4 @@
+from django.core import validators
 from django.shortcuts import get_object_or_404
 from djangorestframework import status
 from djangorestframework.mixins import PaginatorMixin, ReadModelMixin
@@ -15,6 +16,11 @@ class AttemptListView(PaginatorMixin, ListModelView):
 
     def post(self, request, *args, **kwargs):
         contract = get_object_or_404(GameResource.model, pk=kwargs['game_id'])
+
+        if hasattr(self._resource, 'get_form_class'):
+            form = self._resource.get_form_class()
+            form.base_fields['number'].validators.append(validators.MaxValueValidator(contract.max_value))
+            form.base_fields['number'].validators.append(validators.MinValueValidator(contract.min_value))
 
         instance = contract.attempt_set.create(
             our_number=contract.generate_number(),
